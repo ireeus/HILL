@@ -4,7 +4,6 @@ $username = "root";
 $password = "";
 $dbname = "MONITORING";
 
-
 if (isset($_POST["username"]) and $page != "registration.php"){session_start();}
 
 //mysqli_connect($servername,$username,$password) or die(mysqli_error()."Nie mozna polaczyc sie z baza danych. Prosze chwile odczekac i sprobowac ponownie.");

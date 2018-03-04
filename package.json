@@ -1,7 +1,7 @@
 {
     "title": "SB Admin",
     "name": "startbootstrap-sb-admin",
-    "version": "4.0.0-alpha",
+    "version": "4.0.0",
     "description": "A one page app landing page HTML theme for Bootstrap.",
     "keywords": [
         "css",
@@ -13,7 +13,7 @@
         "admin",
         "app"
     ],
-    "homepage": "http://startbootstrap.com/template-overviews/sb-admin",
+    "homepage": "https://startbootstrap.com/template-overviews/sb-admin",
     "bugs": {
         "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin/issues",
         "email": "feedback@startbootstrap.com"
@@ -28,21 +28,22 @@
         "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin.git"
     },
     "dependencies": {
-        "bootstrap": "^4.0.0-alpha.6",
-        "chart.js": "^2.5.0",
-        "datatables.net-bs4": "1.10.15",
+        "bootstrap": "4.0.0",
+        "chart.js": "2.7.1",
+        "datatables.net-bs4": "1.10.16",
         "font-awesome": "4.7.0",
-        "jquery": "^3.2.1",
-        "jquery.easing": "^1.4.1",
-        "tether": "^1.4.0"
+        "jquery": "3.3.1",
+        "jquery.easing": "^1.4.1"
     },
     "devDependencies": {
-        "browser-sync": "^2.18.8",
+        "browser-sync": "2.23.6",
         "gulp": "^3.9.1",
-        "gulp-clean-css": "3.2.0",
-        "gulp-header": "1.8.8",
+        "gulp-clean-css": "3.9.2",
+        "gulp-header": "2.0.1",
+        "gulp-html-beautify": "^1.0.1",
+        "gulp-pug": "^3.3.0",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^3.1.0",
-        "gulp-uglify": "^2.1.2"
+        "gulp-uglify": "3.0.0"
     }
 }

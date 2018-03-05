@@ -34,7 +34,7 @@
           <div class="form-group">
             <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember Password</label>
+                <input class="form-check-input" type="checkbox"> Remember Me</label>
             </div>
           </div>
           <a class="btn btn-primary btn-block" href="index.php">Login</a>

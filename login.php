@@ -1,15 +1,10 @@
 <?php 
 //destroying existing session
-
-
 session_destroy();
-    session_unset();     
+session_unset();     
 
 session_start();
 $_SESSION['username'] = '';
-
-
-
 
 ?>
 <!DOCTYPE html>

@@ -15,8 +15,8 @@ $result = mysqli_query($link, $sql);
 if ($_SESSION['username'] == '') {
 header("Location: login.php");
 }
-
-
+//echo $_SESSION['username'];
+//die;
  ?>
 
 <!DOCTYPE html>
@@ -42,13 +42,7 @@ header("Location: login.php");
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <?php include('m.nav.php'); ?>
   
-  
-  
-  
-  
-  
-  
-  
+
   
   
   <div class="content-wrapper">

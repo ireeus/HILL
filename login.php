@@ -1,4 +1,17 @@
+<?php 
+//destroying existing session
 
+
+session_destroy();
+    session_unset();     
+
+session_start();
+$_SESSION['username'] = '';
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Login</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -22,14 +35,16 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header"><center><img src='lib/img/logo.png' width='150'></center></div>
       <div class="card-body">
-        <form>
+	 
+	  
+        <form  action="sign-in.php" method="post">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="usernameid">Username</label> <?php echo $_SESSION['username']; ?>
+            <input type="name" name="username" class="form-control" id="usernameid" placeholder="name">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+            <label for="passwordid">Password</label>
+            <input type="password" name="password" class="form-control" id="passwordid" placeholder="Password">
           </div>
           <div class="form-group">
             <div class="form-check">
@@ -37,8 +52,12 @@
                 <input class="form-check-input" type="checkbox"> Remember Me</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="index.php">Login</a>
+		  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        
         </form>
+		
+						
+		
         <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
           <a class="d-block small" href="forgot-password.php">Forgot Password?</a>

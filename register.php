@@ -130,11 +130,11 @@ if ($action == 'execute')
 		$share = md5($username); //username encryption for sharing purpose
 		$token = date("H:i:s"); 
 		$token = md5($token);
-		$token = strtoupper(substr($token, -6));  
+		$token = strtoupper(substr($token, -8));  
 
 		// inserts user data to USERS and ADDRESS tables
 		//$query3 = "INSERT INTO `USERS` (`ID`, `USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`) VALUES (NULL, '$username', '$password', '$email', '$name', '$surname', ''$token, '$ip')";
-        $query3 = "INSERT INTO `serversv_MONITORING`.`USERS` (`USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`, `TYPE`) VALUES ('$username','$password','$email', '$name', '$surname','$token','$ip','USER')";
+        $query3 = "INSERT INTO `serversv_MONITORING`.`USERS` (`USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`, `TYPE`) VALUES ('$username','$password','$email', '$name', '$surname','$token','$ip','BASIC')";
 
 		mysqli_query($conn, $query3) or die("Error: 0001");// Error: 0001 unable to register in USERS table
 		//mysql_query("INSERT INTO `serversv_shouse`.`ADDRESS` (`USERNAME`) VALUES ('$username')") or die("Error: 0002"); // Error: 0002 unable to register in ADDRESS table
@@ -147,7 +147,9 @@ if ($action == 'execute')
 		echo $token.'<br>';
 		echo $ip.'<br>';
 		*/
-	
+		 $_SESSION['username'] = $username;
+
+
 	
 		// Sending activation link
 

@@ -35,16 +35,30 @@ $_SESSION['username'] = '';
     <div class="card card-login mx-auto mt-5">
       <div class="card-header"><center><img src='lib/img/logo.png' width='150'></center></div>
       <div class="card-body">
-	 
+	 <?php 
+if (isset($_GET['item'])) {$item = $_GET['item'];
+if ($item == '1') {
+    echo '<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>Unable to authenticate. Please check the username or password.<br /></div>';
+} 
+elseif ($item == '4') {
+    echo '<div class="alert alert-success" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>Your account is activated. Please login<br /></div>';
+}
+}
+
+?>
 	  
         <form  action="sign-in.php" method="post">
           <div class="form-group">
             <label for="usernameid">Username</label> <?php echo $_SESSION['username']; ?>
-            <input type="name" name="username" class="form-control" id="usernameid" placeholder="name">
+            <input type="name" name="username" class="form-control" id="usernameid" placeholder="name" required>
           </div>
           <div class="form-group">
             <label for="passwordid">Password</label>
-            <input type="password" name="password" class="form-control" id="passwordid" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="passwordid" placeholder="Password" required>
           </div>
           <div class="form-group">
             <div class="form-check">

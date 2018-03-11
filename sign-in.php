@@ -33,7 +33,7 @@ if (isset($_POST['username']) || isset($_POST['password'])) {
     $istnick = mysqli_fetch_array(mysqli_query($link,$query1)); // sprawdzenie czy istnieje uzytkownik o takim nicku i hasle
     if ($istnick[0] == 0) {
    
-        header("Location: login.php?item=3");die();
+        header("Location: login.php?item=1");die();
         
     } else {
         

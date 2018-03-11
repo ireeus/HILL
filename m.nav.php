@@ -112,27 +112,8 @@ if (mysqli_num_rows($result1) > 0) {
           </ul>
         </li>  -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#"><font color='MediumSeaGreen'>Registration date:</font> <br>
-            <?php
-				
-				/* Usual SQL Queries */
-				$username = $_SESSION['username'];
-				$query    = "SELECT * FROM `USERS` 
-                                WHERE `USERNAME` =  '$username'";
-				$result1  = mysqli_query($link, $query);
-				if (mysqli_num_rows($result1) > 0) {
-					while ($row = mysqli_fetch_array($result1)) {
-        
-						echo $row['TIMESTAMP'];
+          <a class="nav-link" href="#"><font color='MediumSeaGreen'></font> <br>
 
-        
-        
-    }
-    mysqli_close($link);
-}
-echo ' 
-<font color="red"><br> Account type:</font> <br>'.$TYPE
-?>
    
           </a>
         </li>
@@ -146,40 +127,50 @@ echo '
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-     <!--   <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-envelope"></i>
-            <span class="d-lg-none">Messages
-              <span class="badge badge-pill badge-primary">12 New</span>
-            </span>
-            <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-            </span>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            <i class="fa fa-fw fa-info-circle"></i>
+
           </a>
           <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">New Messages:</h6>
+
+            <h6 class="dropdown-header">Account info</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong>David Miller</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+              <strong>Registration date:</strong>
+              <span class="small float-right text-muted"><div class="dropdown-message medium"><?php
+				
+				/* Usual SQL Queries */
+				$username = $_SESSION['username'];
+				$query    = "SELECT * FROM `USERS` 
+                                WHERE `USERNAME` =  '$username'";
+				$result1  = mysqli_query($link, $query);
+				if (mysqli_num_rows($result1) > 0) {
+					while ($row = mysqli_fetch_array($result1)) {
+        
+						echo $row['TIMESTAMP'];
+
+						}
+						mysqli_close($link);
+				}?>
+				</div>
+			</span>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong>Jane Smith</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+              <strong>Account type:</strong>
+              <span class="small float-right text-muted"><?php echo $TYPE;?></span>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong>John Doe</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all messages</a>
-          </div>
+
+ <div class="dropdown-message small"><font color='white'>---------------------------------------------------------</font></div>
+              </a>
+
         </li>
+		
+		<!-- 
+		
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-bell"></i>

@@ -34,7 +34,7 @@ if ($action == 'execute')
 	//$account_type = $_POST['account_type'];
 	$username = substr(addslashes(htmlspecialchars($_POST['username'])) , 0, 32);
 	$surname =  ucfirst(strtolower($_POST['surname']));
-	$name =  ucfirst(strtolower($_POST['name']));
+	   $name =  ucfirst(strtolower($_POST['name']));
 	$password = substr(addslashes($_POST['password']) , 0, 32);
 	$vpassword = substr($_POST['vpassword'], 0, 32);
 	$email = substr($_POST['email'], 0, 32);
@@ -62,8 +62,6 @@ if ($action == 'execute')
 	$pos2 = strpos($email, ".");
 	$emailx = explode("@", $email);
 	
-	
-
 	$warning = '';
 	$spr4 = strlen($username);
 	$spr5 = strlen($password);
@@ -137,13 +135,13 @@ if ($action == 'execute')
 		$username = str_replace(' ', '', $username);
 		$password = md5($password); //Password encryption
 		$share = md5($username); //username encryption for sharing purpose
-		$token_char = $email . 'activation' . $username;
-		$token = md5($token_char);
-		$token = substr($token, -5);  
+		$token = date("H:i:s"); 
+		$token = md5($token);
+		$token = strtoupper(substr($token, -6));  
 
 		// inserts user data to USERS and ADDRESS tables
 		//$query3 = "INSERT INTO `USERS` (`ID`, `USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`) VALUES (NULL, '$username', '$password', '$email', '$name', '$surname', ''$token, '$ip')";
-        $query3 = "INSERT INTO `serversv_MONITORING`.`USERS` (`USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`) VALUES ('$username','$password','$email', '$name', '$surname','$token','$ip')";
+        $query3 = "INSERT INTO `serversv_MONITORING`.`USERS` (`USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`, `TYPE`) VALUES ('$username','$password','$email', '$name', '$surname','$token','$ip','USER')";
 
 		mysqli_query($conn, $query3) or die("Error: 0001");// Error: 0001 unable to register in USERS table
 		//mysql_query("INSERT INTO `serversv_shouse`.`ADDRESS` (`USERNAME`) VALUES ('$username')") or die("Error: 0002"); // Error: 0002 unable to register in ADDRESS table

@@ -49,17 +49,17 @@ if (mysqli_num_rows($result1) > 0) {
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">Settings</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.php">Navbar</a>
+              <a href="user.php">User</a>
             </li>
             <li>
-              <a href="cards.php">Cards</a>
+              <a href="app.php">App</a>
             </li>
           </ul>
-        </li>
+        </li><!-- 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
@@ -110,9 +110,9 @@ if (mysqli_num_rows($result1) > 0) {
               </ul>
             </li>
           </ul>
-        </li>  
+        </li>  -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">Account registration date:
+          <a class="nav-link" href="#"><font color='MediumSeaGreen'>Registration date:</font> <br>
             <?php
 				
 				/* Usual SQL Queries */
@@ -130,12 +130,14 @@ if (mysqli_num_rows($result1) > 0) {
     }
     mysqli_close($link);
 }
-
+echo ' 
+<font color="red"><br> Account type:</font> <br>'.$TYPE
 ?>
    
           </a>
         </li>
       </ul>
+	  
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
@@ -144,7 +146,7 @@ if (mysqli_num_rows($result1) > 0) {
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+     <!--   <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-envelope"></i>
             <span class="d-lg-none">Messages
@@ -220,14 +222,14 @@ if (mysqli_num_rows($result1) > 0) {
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all alerts</a>
           </div>
-        </li>
+        </li>-->
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2">
             <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search for...">
+              <input class="form-control" type="text" placeholder="Enter Amps">
               <span class="input-group-append">
                 <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search"></i>
+                  <i class="fa fa-toggle-right"></i>
                 </button>
               </span>
             </div>

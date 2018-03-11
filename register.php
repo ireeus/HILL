@@ -41,14 +41,7 @@ if ($action == 'execute')
 	//$vemail = substr($_POST['vemail'], 0, 32);
 	$username = trim($username);
 	
-	
-	//echo $username.'<br>';
-	//echo $surname.'<br>';
-	//echo $name.'<br>';
-	//echo $password.'<br>';
-	//echo $vpassword.'<br>';
-	//echo $email.'<br>';
-	
+
 	
 	// several checks of username and email 
 	$query1 = "SELECT COUNT(*) FROM `USERS` USERS WHERE USERNAME='$username' LIMIT 1";

@@ -9,15 +9,27 @@ session_start();
 // Connecting to database
 include("config.php");
 $username   = $_SESSION['username'];
-$sql    = "SELECT * FROM `USERS` WHERE `USERS`.`USERNAME` ='$username'";
-$result = mysqli_query($link, $sql);
+
 // Redirecting to Sign in page if no session id found
 if ($_SESSION['username'] == '') {
 header("Location: login.php");
 }
-//echo $_SESSION['username'];
-//die;
- ?>
+
+/* Usual SQL Queries */
+
+$query    = "SELECT * FROM `USERS` WHERE `USERNAME` =  '$username'";
+$result1  = mysqli_query($link, $query);
+if (mysqli_num_rows($result1) > 0) {
+while ($row = mysqli_fetch_array($result1)) {
+	$ACTIVATION = $row['ACTIVATION'];
+	$TYPE = $row['TYPE'];
+if($ACTIVATION!='ACTIVE') {header("Location: activation.php");}
+
+    }
+   
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -931,6 +943,7 @@ header("Location: login.php");
         </div>
       </div>
     </div>
+	<?PHP  mysqli_close($link);?>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

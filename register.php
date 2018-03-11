@@ -139,6 +139,7 @@ if ($action == 'execute')
 		$share = md5($username); //username encryption for sharing purpose
 		$token_char = $email . 'activation' . $username;
 		$token = md5($token_char);
+		$token = substr($token, -5);  
 
 		// inserts user data to USERS and ADDRESS tables
 		//$query3 = "INSERT INTO `USERS` (`ID`, `USERNAME`, `PASSWORD`, `EMAIL`, `NAME`, `SURNAME`, `ACTIVATION`, `IP`) VALUES (NULL, '$username', '$password', '$email', '$name', '$surname', ''$token, '$ip')";
@@ -159,17 +160,34 @@ if ($action == 'execute')
 	
 		// Sending activation link
 
-		$message = 'Activation link';
+		$message = 'Activation Code:
+		
+		';
 		$email = $_POST['email'];
-		$link = ' http://servers.vxm.pl/HILL/activation.php?id=' . $token . '';
+		$link = ' '.$token .'';
 		$msg = '' . $message . '' . $link . '';
-		$emailfrom = 'ireeus@gmail.com';
-		$headers = 'Account activation :' . ' ' . $emailfrom . '' . "\r\n";
-		mail($email, $headers, "Account activation.", $msg);
+		//$emailfrom = 'ireeus@gmail.com';
+		$headers = 'Account activation' . ' ' . "\r\n";
+		mail($email, $headers, "Use this code to activate your account.", $msg);
 		echo ' <div class="alert alert-success">
-  <strong>Success!</strong> Your account <span style="color: red; font-weight: bold;">' . $username . ' </span> was registred. To continue, you need to activate your account. Please check your email (spam folder) for activation link.</span>
-</div>
- <br /><br /><br /><br /><br /><br /><br />';
+  <strong>Success!</strong> Your account <span style="color: red; font-weight: bold;">' . $username . ' </span> was registred. To continue, you need to activate your account. Please check your email for activation code and enter it below.<br></span>
+<p>
+  <form method="post" action="activation.php">
+
+  
+            <div class="form-row">
+              <div class="col-md-6">
+                
+				  <p><input class="form-control" maxlength="18" id="InputActivation" name="activation"  type="text" aria-describedby="nameHelp" placeholder="Activation code" required></p> </div>
+              </div>  
+			<div class="form-group">			  
+			  <div class="form-row">  <br /><br /><button type="submit" class="btn btn-primary btn-block">Activate</button>
+			  </div>
+            </div>
+  </div>	
+
+  </form></p>
+ <br /><br /><br /><br /><br />';
  $status = '1';
  
  mysqli_close($link);

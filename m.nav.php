@@ -2,23 +2,25 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.php">
 	
-            <?php
-				
-				/* Usual SQL Queries */
-				$username = $_SESSION['username'];
-				$query    = "SELECT * FROM `USERS` 
+	<?php
+
+$username = $_SESSION['username'];
+$query    = "SELECT * FROM `USERS` 
                                 WHERE `USERNAME` =  '$username'";
-				$result1  = mysqli_query($link, $query);
-				if (mysqli_num_rows($result1) > 0) {
-					while ($row = mysqli_fetch_array($result1)) {
+$result1  = mysqli_query($link, $query);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_array($result1)) {
         
-				echo $row['NAME'];
-        			echo ' ';
-      				echo $row['SURNAME'];
+        echo $row['NAME'];
+        echo ' ';
+        echo $row['SURNAME'];
         
-  				  }
-    				}
-		?>
+        
+    }
+    
+}
+
+?>
    	
 	</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

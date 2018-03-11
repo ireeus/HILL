@@ -112,10 +112,48 @@ if (mysqli_num_rows($result1) > 0) {
           </ul>
         </li>  -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#"><font color='MediumSeaGreen'></font> <br>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            <i class="fa fa-fw fa-info-circle"> </i>
 
-   
           </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+
+            <h6 class="dropdown-header">Account info</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Registered:</strong>
+              <span class="small float-right text-muted"><div class="dropdown-message medium"><?php
+				
+				/* Usual SQL Queries */
+				$username = $_SESSION['username'];
+				$query    = "SELECT * FROM `USERS` 
+                                WHERE `USERNAME` =  '$username'";
+				$result1  = mysqli_query($link, $query);
+				if (mysqli_num_rows($result1) > 0) {
+					while ($row = mysqli_fetch_array($result1)) {
+        
+						 
+						$timestamp = $row['TIMESTAMP'];
+						$datetime = explode(" ",$timestamp);
+						$date = $datetime[0];
+						$time = $datetime[1];
+						echo	$date;
+						
+						
+						}
+						mysqli_close($link);
+				}?>
+				</div>
+			</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Account type:</strong>
+              <span class="small float-right text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $TYPE;?></span>
+            </a>
+        </li>
+
         </li>
       </ul>
 	  
@@ -127,47 +165,7 @@ if (mysqli_num_rows($result1) > 0) {
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-            <i class="fa fa-fw fa-info-circle"></i>
 
-          </a>
-          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-
-            <h6 class="dropdown-header">Account info</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>Registration date:</strong>
-              <span class="small float-right text-muted"><div class="dropdown-message medium"><?php
-				
-				/* Usual SQL Queries */
-				$username = $_SESSION['username'];
-				$query    = "SELECT * FROM `USERS` 
-                                WHERE `USERNAME` =  '$username'";
-				$result1  = mysqli_query($link, $query);
-				if (mysqli_num_rows($result1) > 0) {
-					while ($row = mysqli_fetch_array($result1)) {
-        
-						echo $row['TIMESTAMP'];
-
-						}
-						mysqli_close($link);
-				}?>
-				</div>
-			</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>Account type:</strong>
-              <span class="small float-right text-muted"><?php echo $TYPE;?></span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-
- <div class="dropdown-message small"><font color='white'>---------------------------------------------------------</font></div>
-              </a>
-
-        </li>
 		
 		<!-- 
 		
@@ -213,11 +211,11 @@ if (mysqli_num_rows($result1) > 0) {
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all alerts</a>
           </div>
-        </li>-->
+        </li>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2">
             <div class="input-group">
-              <input class="form-control" type="text" placeholder="Enter Amps">
+              <input class="form-control" type="text" placeholder="">
               <span class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fa fa-toggle-right"></i>
@@ -225,7 +223,7 @@ if (mysqli_num_rows($result1) > 0) {
               </span>
             </div>
           </form>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>

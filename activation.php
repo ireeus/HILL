@@ -63,7 +63,7 @@ if ($row['ACTIVATION'] =='ACTIVE')header("Location: index.php");{}
       <div class="card-header"><center><img src='lib/img/logo.png' width='150'></center></div>
       <div class="card-body">
         <div class="alert alert-warning">
-  <strong>Activation </strong>Please check your email for activation code and enter it below.<br></span>
+  <strong>Activation. </strong>Please check your email for activation code and enter it below.<br></span>
 <p>
   <form method="post" action="activation.php">
 
@@ -71,7 +71,7 @@ if ($row['ACTIVATION'] =='ACTIVE')header("Location: index.php");{}
             <div class="form-row">
               <div class="col-md-6">
                 
-				  <p><input class="form-control" maxlength="18" id="InputActivation" name="activation"  type="text" aria-describedby="nameHelp" placeholder="Activation code" required></p> </div>
+				  <p><input class="form-control" maxlength="18" id="InputActivation" name="activation"  type="text" aria-describedby="nameHelp" placeholder="Activation code" required autocomplete="off"></p> </div>
               </div>  
 			<div class="form-group">			  
 			  <div class="form-row">  <br /><br /><button type="submit" class="btn btn-primary btn-block">Activate</button>

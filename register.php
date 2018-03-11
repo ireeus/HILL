@@ -50,9 +50,6 @@ if ($action == 'execute')
 	//echo $email.'<br>';
 	
 	
-	
-	
-	
 	// several checks of username and email 
 	$query1 = "SELECT COUNT(*) FROM `USERS` USERS WHERE USERNAME='$username' LIMIT 1";
 	$query2 = "SELECT COUNT(*) FROM `USERS` USERS WHERE EMAIL='$email' LIMIT 1";
@@ -65,57 +62,58 @@ if ($action == 'execute')
 	$warning = '';
 	$spr4 = strlen($username);
 	$spr5 = strlen($password);
+	$number = '6';
 
 	// CHECKING WHAT WAS DONE INCORRECTLY 
 	if (!$username || !$email || !$password || !$vpassword )
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>You need to fill out all fields<br /></div>';
+  <span class="sr-only">Error:</span>You need to fill out all fields<br />';
 		}
 
-	if ($spr4 < 4)
+	if ($spr4 < $number)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>The username needs to be at least 4 characters long.<br /></div>';
+  <span class="sr-only">Error:</span>The username needs to be at least '.$number.' characters long.<br />';
 		}
 
-	if ($spr5 < 4)
+	if ($spr5 < $number)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>The password needs to be at least 4 characters long.<br /></div>';
+  <span class="sr-only">Error:</span>The password needs to be at least '.$number.'   characters long.<br />';
 		}
 
 	if ($spr1[0] >= 1)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>This username already exist.<br /></div>';
+  <span class="sr-only">Error:</span>This username already exist.<br />';
 		}
 
 	if ($spr2[0] >= 1)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>This e-mail is taken!<br /></div>';
+  <span class="sr-only">Error:</span>This e-mail is taken!<br />';
 		}
 
 	
 
 	if ($password != $vpassword)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>Passwords don\'t match<br /></div>';
+  <span class="sr-only">Error:</span>Passwords don\'t match<br />';
 		}
 
 	if ($pos == false OR $pos2 == false)
 		{
-		$warning.= '<div class="alert alert-danger" role="alert">
+		$warning.= '
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>Incorrect e-mail<br /></div>';
+  <span class="sr-only">Error:</span>Incorrect e-mail<br />';
 		}
 
 
@@ -124,7 +122,9 @@ if ($action == 'execute')
 
 	if ($warning)
 		{
+			echo'<div class="alert alert-danger" role="alert">';
 		echo $warning;
+		echo'</div>';
 		}
 	  else
 		{

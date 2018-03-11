@@ -1,3 +1,44 @@
+<?php 
+////////////// Configuration //////////////
+$page = 'activation.php';
+
+
+///////////// Security /////////////
+session_start();
+
+// Connecting to database
+include("config.php");
+$username   = $_SESSION['username'];
+
+// Redirecting to Sign in page if no session id found
+if ($_SESSION['username'] == '') {
+header("Location: login.php");
+}
+
+/* Usual SQL Queries */
+
+$query    = "SELECT * FROM `USERS` WHERE `USERNAME` =  '$username'";
+$result1  = mysqli_query($link, $query);
+if (mysqli_num_rows($result1) > 0) {
+while ($row = mysqli_fetch_array($result1)) {
+	
+$ACTIVATION = $row['ACTIVATION'];
+
+	if($ACTIVATION!='ACTIVE') {
+		$activation_code = $_POST['activation'];
+	if($activation_code==$ACTIVATION) {mysqli_query($link, "UPDATE `serversv_MONITORING`.`USERS` SET `ACTIVATION` = 'ACTIVE' WHERE `USERS`.`ACTIVATION` ='$ACTIVATION'");}
+	
+}$result1  = mysqli_query($link, $query);
+if (mysqli_num_rows($result1) > 0) {
+while ($row = mysqli_fetch_array($result1)) {
+if ($row['ACTIVATION'] =='ACTIVE')header("Location: index.php");{}
+}
+    }
+   
+}} 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
